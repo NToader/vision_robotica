@@ -1,1 +1,1 @@
-## Vision robotica
+[Link al blog](https://ntoader.github.io/vision_robotica/)
