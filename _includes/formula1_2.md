@@ -27,3 +27,7 @@ Pero solo implemente un controlador para el giro y técnicamente también para l
 ```
 
 Una vez ajustados los parámetro ``Kp`` y ``Kd`` el coche conseguía completar el circuito en un tiempo de alrededor de 1 min.
+
+<video muted controls>
+    <source src="assets/video/2.mp4" type="video/mp4" preload="none">
+</video>
