@@ -5,14 +5,14 @@ asignatura de Visión Robótica.
 
 ## Primeros pasos
 
-Los primeros pasos para realizar la practica fueron segmentar la imagen para poder conseguir la medida de divergencia entre el centro de la linea y el cnetro de la imagen.
-Para ello, se guardo una imagen devulta por el robot que posteriomente fue utilizada localmente para desarrollar la segmentacion. Esta segmentacion se realiza en base a los rangos de colores ofrecidos en el tutorial de la practica siguiendo las instruciones.
+Los primeros pasos para realizar la práctica fueron segmentar la imagen para poder conseguir la medida de divergencia entre el centro de la línea y el centro de la imagen.
 
-A continuacion se puede observar el resultado:
+
+A continuación se puede observar el resultado:
 
 <img src="assets/images/car.jpg" class="inline" width="49%">
 <img src="assets/images/car_seg.jpg" class="inline" width="49%">
 
-Seguidamente se calculo el punto medio de la linea segmentada, esto es indmediato siguiendo el tutorial de la practica.
+Seguidamente se calculó el punto medio de la línea segmentada, esto es inmediato siguiendo el tutorial de la práctica.
 
 <img src="assets/images/car_point.jpg" class="inline" width="49%">
