@@ -1,18 +1,40 @@
-# Formula 1
+# Formula 1 - WORK IN PROGRESS
 
-En la presente página se recogerá el camino seguido para el desarrollo de la práctica de _follow line_ para la 
-asignatura de Visión Robótica.
+<div style="display:flex; flex-flow:row; align-items:center">
+<p>
+En la presente página se recogerá el camino seguido para el desarrollo de la práctica de <em>Follow Line</em> 
+dessarrollada mediante el framework de <a href="https://academy.jderobot.org/">JdeRobot Academy</a>. Este framework
+ofrece una cómoda aproximación al uso del simulador Gazebo al dar acceso mediante una interfaz web y un notebook de 
+Python a la simulación ejecutada en un servidor. Esta práctica consiste en programar el comportamiento de un monoplaza
+para que este sea capaz de seguir una línea roja a lo largo de un circuito de manera 
+</p>
+<img src="assets/images/thumbnail_follow_line.png" class="inline" style="max-height:10rem; width:20rem;">
 
-## Primeros pasos
-
-Los primeros pasos para realizar la práctica fueron segmentar la imagen para poder conseguir la medida de divergencia entre el centro de la línea y el centro de la imagen.
+</div>
 
 
-A continuación se puede observar el resultado:
+## Primera aproximación al problema
 
-<img src="assets/images/car.jpg" class="inline" width="49%">
-<img src="assets/images/car_seg.jpg" class="inline" width="49%">
+El primer paso para realizar la practica fue binarizar la imagen ofrecida por el sistema en dos categorías: 
+línea y no línea. Dado que el rango de colores HSV venia dado en la documentación de la práctica, esta tarea 
+fue trivial. Una vez generada esta mascara se calculó el punto medio de la línea a una altura de 190 pixeles respecto
+al borde inferior de la imagen. A continuación, se puede observar el resultado de los pasos descritos anteriormente:
 
-Seguidamente se calculó el punto medio de la línea segmentada, esto es inmediato siguiendo el tutorial de la práctica.
+<img src="assets/images/car.jpg" class="inline" width="32%">
+<img src="assets/images/car_seg.jpg" class="inline" width="32%">
+<img src="assets/images/car_point.jpg" class="inline" width="32%">
 
-<img src="assets/images/car_point.jpg" class="inline" width="49%">
+La diferencia entre el punto definido anteriomente, al que denominaré **punto de guía**, frente al centro de la imagen,
+componen la medida de desviación del monoplaza respecto a la línea que este debe seguir. Dada esta medida se implementó
+un sencillo controlador reactivo por medio de sentencias `if`. Unido a ello también se implementó la _telemetría_ del
+monoplaza en la imagen devuelta por este, ya que el mostrarlo en consola y poder centrarse en los valores mostrar dos 
+era inviable. Posteriormente los indicadores fueron mejorados para añadir mayor número de parámetros que facilitasen 
+el ajuste del sistema
+
+<div style="display: flex; align-items:center; justify-content:center">
+<img src="assets/images/car_tele.jpg" class="inline" width="32%">
+<img src="assets/images/car_tele2.jpg" class="inline" width="32%">
+</div>
+
+Esta primera aproximación permitió obtener las primeras sensaciones respecto al comportamiento del entorno de simulación
+y los limites en cuanto a velocidad y giro del monoplaza.

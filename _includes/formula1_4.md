@@ -1,0 +1,3 @@
+# Resultados y conclusiones
+El mejor tiempo de vuelta conseguido fue de 27 segundos en simulación, pese a aun ser relativamente alto, ir más allá
+supone reducir el tiempo de muestreo del sistema, y como no está al alcance ...
