@@ -6,7 +6,7 @@ En la presente página se recogerá el camino seguido para el desarrollo de la p
 implementada mediante el framework de <a href="https://academy.jderobot.org/">JdeRobot Academy</a>. Este framework
 ofrece una cómoda aproximación al uso del simulador Gazebo, al dar acceso mediante una interfaz web y un notebook de 
 Python, a la simulación ejecutada en un servidor. Esta práctica consiste en implementar el comportamiento de un 
-monoplaza para que sea capaz de seguir una línea roja a lo largo de un circuito de manera rápida y robusta.
+monoplaza para que sea capaz de seguir una línea roja, a lo largo de un circuito, de manera rápida y robusta.
 </p>
 <img src="assets/images/thumbnail_follow_line.png" class="inline" style="max-height:10rem; width:20rem;">
 
@@ -24,7 +24,7 @@ al borde inferior de la imagen. A continuación, se puede observar el resultado 
 <img src="assets/images/car_seg.jpg" class="inline" width="32%">
 <img src="assets/images/car_point.jpg" class="inline" width="32%">
 
-La diferencia entre el punto definido anteriomente, al que denominaré **punto de guía**, frente al centro de la imagen,
+La diferencia entre el punto definido anteriomente, al que denominaré **punto guía**, frente al centro de la imagen,
 componen la **medida de desviación** del monoplaza respecto a la línea que éste debe seguir. Dada esta medida, se implementó
 un sencillo **controlador reactivo** por medio de sentencias `if`. Unido a ello, también se implementó la **_telemetría_** del
 monoplaza, en la imagen devuelta por este, ya que el mostrarlo en consola y poder centrarse en los valores mostrados 

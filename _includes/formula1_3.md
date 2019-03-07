@@ -11,11 +11,11 @@ una primera idea fue tomar la diferencia entre la componente horizontal del punt
 a seguir. Pero esto aproximación tenía el inconveniente de que el sistema fallaría en caso de una curva abierta donde
 el punto final y de principio, de la línea, estuviesen alineados.
 
-Como alternativa a la solución anterior se siguió un camino similar, calcular la ecuación de la línea (`y = m x + b`) 
+Como alternativa a la solución anterior se siguió un camino similar, calcular la **ecuación de la recta** (`y = m x + b`) 
 que une los puntos de menor y mayor altura. Dada la ecuación de esta recta, se puede calcular el punto
 perteneciente a esta, situado a la misma altura que el punto de guía. Ahora, con la diferencia entre las componentes 
 horizontales de ambos puntos, se obtiene una medida de discrepancia que puede ser utilizada para determinar si estamos en 
-una recta o no. El caso limite donde la pendiente es infinita, los puntos estan alineads,
+una recta o no. El caso limite, donde la pendiente es infinita, los puntos estan alineads,
  está contemplado generando 0 como discrepancia.
 
 <div style="display: flex; align-items:center; justify-content:center">
@@ -39,7 +39,7 @@ base a un límite, situado en 10 pixeles.
 ## Dos pares de controladores PD 
 
 Una vez implementado el algoritmo de decisión del tipo de tramo, implementé un cambio de las ganancias de los dos pares
-de controladores PD utilizados en el código en base a el tipo de tramo en el que se encontraba el monoplaza. 
+de controladores PD utilizados en el código, en base a el tipo de tramo en el que se encontraba el monoplaza. 
 Seguidamente, ajusté los parámetros de ``Kp``, 
 ``Kd``, ``velocidad máxima``, ``longitud del histórico``, ``threshold`` (discrepancia definida en el apartado anterior para la 
 detección del tipo de tramo). Con estos cambios reduje los tiempos a 65 segundos. Un recorte de 15 segundos,
@@ -52,18 +52,18 @@ como el de curvas.
     </video>
 </div>
 
-## La altura del punto
+## La altura del punto guía
 
-Como los resultados anteriores no me parecían suficientes dado que la simulación no presenta fuera centrifuga la velocidad
-debía poder ser mucho mayor. Por tanto, recordé que había un grado de libertad aun si ajustar, la altura del punto
+Como los resultados anteriores no me parecían suficientes, dado que la simulación no presenta fuerzas que afecten al trazado, la velocidad
+debía poder ser incrementada. Por tanto, recordé que había un grado de libertad sin ajustar, la altura del punto
 de guía. Cuando este punto es situado muy abajo, cerca del monoplaza, la desviación tolerable es mayor y la capacidad
-de reacción ante cambios es menor, ya que se producen a escasa distancia. Mientras que, si se sitúa en un valor elevado, la desviación 
-tolerable es mínima, ya que el coche deja fácilmente de _seguir_ la línea, pero se gana en capacidad de reacción. 
+de reacción ante cambios es menor, ya que, se producen a escasa distancia. Mientras que, si se sitúa en un valor elevado, la desviación 
+tolerable es mínima, puesto que, el coche deja fácilmente de _seguir_ la línea, pero se gana en capacidad de reacción. 
 Por tanto, para ajustar este parámetro se debe minimizar la magnitud de la discrepancia y a cambio se gana la capacidad 
 de reaccionar con mayor antelación a cambios en el tramo, en consecuencia se puede aumentar la velocidad del monoplaza.
 
 Ajustando nuevamente los parámetros del sistema, esta vez con la altura del punto guía prácticamente en lo máximo 
-capturado, se reduce el tiempo de vuelta considerablemente, bajando a 25 segundos (simulación), tal y como se puede ver en el 
+capturado, se reduce el tiempo de vuelta considerablemente, bajando a 27 segundos (25 en simulación), tal y como se puede ver en el 
 siguiente video:
 <div style="display:flex;justify-content: center;">
     <video muted controls style="width:60%" preload="none">
@@ -80,16 +80,16 @@ Vuelta en sentido contrario:
 
 ## El tiempo de ejecución
 
-La solución anterior, aunque es buena en lo que respecta a velocidad y robustez es muy sensible al tiempo de ejecución.
-A pesar de que la interacción que envía imagen a la aplicación web presenta un tiempo de ejecución mayor, si lo hacen
+La solución anterior, aunque es buena en lo que respecta a velocidad y robustez, es muy sensible al tiempo de ejecución.
+A pesar de que la iteracción que envía imagen, a la aplicación web, presenta un tiempo de ejecución mayor, si lo hacen
 también subsiguientes iteraciones afectaran gravemente a la estabilidad del monoplaza. Un ejemplo de estas perturabaciones
 se puede observar en la siguiente lista de tiempos de ejecución medidos:
 ```
 6.215 24.973 4.701 4.329 4.512 6.236 23.329 4.272 5.400 7.287 7.1990489959 28.028 28.908 42.073 42.361 80.470 26.750 15.516 21.494 6.053 4.663
 ```
 
-Para tener en cuenta la posible aparición del fenómeno anterior se ha introducido el tiempo de ejecución medio de las 
-10 últimas iteraciones como elemento dentro de la _telemetría_ mostrada en la imagen de salida:
+Para tener en cuenta la posible aparición del fenómeno anterior, se ha introducido el tiempo de ejecución medio de las 
+10 últimas iteraciones, como elemento dentro de la _telemetría_ mostrada en la imagen de salida:
 <div style="display: flex; align-items:center; justify-content:center">
 <img src="assets/images/car_tele_lat.jpg" class="inline" width="50%">
 </div>
@@ -107,16 +107,16 @@ descarté como posible factor de mejora.
 </div>
 
 ## Término integral
-También llegue a intentar introducir el término Integral del controlador, pero la suma de errores se incrementaba
+También llegue a intentar introducir el término integral del controlador, pero la suma de errores se incrementaba
 con mucha rapidez y no tenía claro cuando reiniciar su valor o si el acumulador debía ser infinito o tener un horizonte
-temporal. Debido a introducir nuevos parámetros a ajustar de los que no tenía claro su valor ni el beneficio ofrecido 
-por este término, para el problema actual (carente de fuerzas que contrarestar), descarte su inclusión en la práctica.
+temporal. Debido a que no tenía claro el valor esperado ni el beneficio aportado por este término, 
+para el problema actual (carente de fuerzas a contrarestar), descarte su inclusión en la práctica.
 
 
 ## ¿Línea?
 
 Como ultima mención, también he tenido en cuenta que debe hacer el monoplaza en caso de no detectar una línea. En
-principio el ejercicio consiste en seguir una línea, por tanto, mi solución a este problema viene basada en este hecho.
+principio, el ejercicio consiste en seguir una línea, por tanto, mi solución a este problema se basa en este hecho.
 Por ello, la aproximación que he seguido es realizar marcha atrás sin realizar ningún giro hasta volver a encontrar la 
 línea. Esto se debe a que, si por algún mal giro el monoplaza ha perdido la línea de vista, la marcha atrás será la 
 mejor manera para volver a encontrarla ya que volverá a recorrer una trayectoria similar a la seguida para perderla.

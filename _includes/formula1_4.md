@@ -5,5 +5,5 @@ relativamente alto, ir más allá supone reducir el tiempo de muestreo del siste
 una buena solución con el único inconveniente de ser sensible al tiempo de ejecución.
 
 Tras el desarrollo de esta práctica he podido afianzar los conocimientos sobre los diferentes sistemas de control,
-principalmente los controladores PID. He aprendido el papel que desempeña cada termino de estos controladores, así como,
+principalmente los controladores PID. He aprendido el papel que desempeña cada término de estos controladores, así como,
 la importancia del tiempo de muestreo y la calidad de las mediciones. 
