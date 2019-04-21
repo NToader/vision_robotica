@@ -53,28 +53,35 @@ body{
   padding: 3rem 3rem;
 }
 
-.project-name {
+.project-name a{
   font-size: 3rem;
   border: 2px solid #e84545;
   padding: 1rem 2rem;
   color: #e84545;
   font-weight: 100;
+  text-decoration: none;
+  display: block;
 }
 
 .project-name-sec {
   font-size: 1.2rem;
   border: 3px solid #e84545;
-  padding: 0.3rem 0.3rem;
   color: #e84545;
   letter-spacing: normal;
   word-spacing: normal;
   cursor: pointer;
 }
 
+.project-name-sec a{
+  color: #e84545;
+  padding: 0.3rem 0.3rem;
+  text-decoration: none;
+  display: block;
+}
+
 .project-name-sec:hover{
   background-color: #fff;
   border: 3px solid #fff;
-
 }
 
 .main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6 {

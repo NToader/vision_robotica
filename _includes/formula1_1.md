@@ -3,7 +3,7 @@
 <div style="display:flex; flex-flow:row; align-items:center">
 <p>
 En la presente página se recogerá el camino seguido para el desarrollo de la práctica de <em>Follow Line</em> 
-implementada mediante el framework de <a href="https://academy.jderobot.org/">JdeRobot Academy</a>. Este framework
+implementada mediante el framework de <a href="https://unibotics.org/">JdeRobot Academy</a>. Este framework
 ofrece una cómoda aproximación al uso del simulador Gazebo, al dar acceso mediante una interfaz web y un notebook de 
 Python, a la simulación ejecutada en un servidor. Esta práctica consiste en implementar el comportamiento de un 
 monoplaza para que sea capaz de seguir una línea roja, a lo largo de un circuito, de manera rápida y robusta.

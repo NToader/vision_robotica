@@ -25,34 +25,17 @@
 </head>
 <body>
 <header class="page-header" role="banner">
-    <h1 class="project-name">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
+    <h1 class="project-name"><a href="./">{{ page.title | default: site.title | default: site.github.repository_name }}</a></h1>
 </header>
 
 <div class="page-sub-header">
     <div>
-        <!--<h3 class="project-name-sec">Formula 1</h3>-->
+        <h3 class="project-name-sec" style="margin-right: 1em"><a href="formula.html">Formula 1</a></h3>
+        <h3 class="project-name-sec"><a href="reconstruction.html">Reconstrucci&oacute;n 3D</a></h3>
     </div>
 </div>
 
-<div class="main-content">
-    {% capture formula1_1 %}{% include formula1_1.md %}{% endcapture %}
-    {{ formula1_1 | markdownify }}
-</div>
-
-<div class="main-content" style="margin-top: 4rem">
-    {% capture formula1_2 %}{% include formula1_2.md %}{% endcapture %}
-    {{ formula1_2 | markdownify }}
-</div>
-
-<div class="main-content" style="margin-top: 4rem">
-    {% capture formula1_3 %}{% include formula1_3.md %}{% endcapture %}
-    {{ formula1_3 | markdownify }}
-</div>
-
-<div class="main-content" style="margin-top: 4rem">
-    {% capture formula1_4 %}{% include formula1_4.md %}{% endcapture %}
-    {{ formula1_4 | markdownify }}
-</div>
+{{ content }}
 
 <div class="main-content" style="margin-top: 4rem">
     <footer class="site-footer">
